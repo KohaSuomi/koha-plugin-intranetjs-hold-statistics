@@ -22,7 +22,7 @@ our $metadata = {
     minimum_version => '25.05',
     maximum_version => '',
     version         => $VERSION,
-    description     => "Varaustilastot (Paikalliskannat)",
+    description     => "Listaa varaussivulle aktiiviset, kiinni jääneet ja ei aktiiviset varaukset (Paikalliskannat).",
 };
 
 ## This is the minimum code required for a plugin's 'new' method
