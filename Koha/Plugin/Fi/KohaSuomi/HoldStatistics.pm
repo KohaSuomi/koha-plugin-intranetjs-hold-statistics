@@ -22,7 +22,7 @@ our $metadata = {
     minimum_version => '25.05',
     maximum_version => '',
     version         => $VERSION,
-    description     => "Varaustilastot",
+    description     => "Varaustilastot (Paikalliskannat)",
 };
 
 ## This is the minimum code required for a plugin's 'new' method
@@ -66,7 +66,7 @@ sub intranet_js {
 ## of running a tool. The difference between a tool and a report is
 ## primarily semantic, but in general any plugin that modifies the
 ## Koha database should be considered a tool
-sub tool {
+sub admin {
     my ( $self, $args ) = @_;
     
     my $cgi = $self->{'cgi'};
