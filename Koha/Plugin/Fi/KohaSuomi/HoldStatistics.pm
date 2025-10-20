@@ -15,7 +15,7 @@ our $VERSION = "1.0.0";
 
 ## Here is our metadata, some keys are required, some are optional
 our $metadata = {
-    name            => "IntranetUserJS: Varaustilastot",
+    name            => "IntranetUserJS: Hold statistics",
     author          => 'Johanna Räisä',
     date_authored   => '2025-10-17',
     date_updated    => '2025-10-17',
