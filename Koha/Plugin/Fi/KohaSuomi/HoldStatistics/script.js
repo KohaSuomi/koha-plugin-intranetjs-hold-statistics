@@ -39,7 +39,7 @@ $(document).ready(function() {
                     var list = Array.isArray(holds) ? holds : (holds && Array.isArray(holds.holds) ? holds.holds : (holds && Array.isArray(holds.data) ? holds.data : []));
                     let activeCount = 0;
                     list.forEach(function(hold) {
-                        if (hold && hold.status === null) {
+                        if (hold && hold.status === null && hold.suspended !== true) {
                             activeCount++;
                         }
                     });
