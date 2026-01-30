@@ -1,12 +1,12 @@
 $(document).ready(function() {
     if (/request\.pl(\b|$)/.test(window.location.href)) {
-        var $existingHolds = $('#existing_holds');
+        let $existingHolds = $('#existing_holds');
         if ($existingHolds.length) {
-            var params = new URLSearchParams(window.location.search);
-            var biblionumbers = params.getAll('biblionumber') || (function(){
-                var matches = [];
-                var regex = /[?&]biblionumber=([^&]+)/g;
-                var match;
+            let params = new URLSearchParams(window.location.search);
+            const biblionumbers = params.getAll('biblionumber') || (function(){
+                let matches = [];
+                let regex = /[?&]biblionumber=([^&]+)/g;
+                let match;
                 while ((match = regex.exec(window.location.href)) !== null) {
                     matches.push(decodeURIComponent(match[1]));
                 }
