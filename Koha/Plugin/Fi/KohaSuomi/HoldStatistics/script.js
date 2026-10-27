@@ -25,6 +25,35 @@ $(document).ready(function() {
             }
         }
     }
+    if (/catalogue\/detail\.pl(\b|$)/.test(window.location.href)) {
+        let params = new URLSearchParams(window.location.search);
+        let biblionumber = params.get('biblionumber') || (function(){
+            let m = window.location.href.match(/[?&]biblionumber=([^&]+)/);
+            return m ? decodeURIComponent(m[1]) : null;
+        })();
+        if (biblionumber) {
+            fetchRecordHolds(biblionumber, {_per_page: -1, _match: 'exact'}).then(function(holds) {
+                let list = Array.isArray(holds) ? holds : (holds && Array.isArray(holds.holds) ? holds.holds : (holds && Array.isArray(holds.data) ? holds.data : []));
+                let activeCount = 0;
+                list.forEach(function(hold) {
+                    if (hold && hold.status === null && hold.suspended !== true) {
+                        activeCount++;
+                    }
+                });
+                let $holdsLink = $('div#biblio-view-menu a[href^="/cgi-bin/koha/reserve/request.pl?biblionumber="]');
+                if ($holdsLink.length) {
+                    let holdsLink = $holdsLink.html().split(" ");
+                    if (holdsLink.length >= 2) {
+                        $holdsLink.html(`${holdsLink[0]} (${activeCount})/${holdsLink[1]}`);
+                    }
+                }
+                let $detailLink = $('div#catalogue_detail_biblio a[href^="/cgi-bin/koha/reserve/request.pl?biblionumber="]');
+                if ($detailLink.length) {
+                    $detailLink.prepend(`${activeCount}/`);
+                }
+            });
+        }
+    }
     async function fetchRecordHolds(biblionumber, queryParams={}) {
         try {
             let response = await fetch(`/api/v1/holds?biblio_id=${biblionumber}&${new URLSearchParams(queryParams)}`);

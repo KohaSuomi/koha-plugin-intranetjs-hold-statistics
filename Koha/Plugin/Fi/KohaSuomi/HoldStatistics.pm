@@ -11,18 +11,18 @@ use utf8;
 use File::Slurp;
 
 ## Here we set our plugin version
-our $VERSION = "1.0.0";
+our $VERSION = "1.1.0";
 
 ## Here is our metadata, some keys are required, some are optional
 our $metadata = {
     name            => "IntranetUserJS: Hold statistics",
     author          => 'Johanna Räisä',
     date_authored   => '2025-10-17',
-    date_updated    => '2025-10-17',
+    date_updated    => '2026-10-27',
     minimum_version => '25.05',
     maximum_version => '',
     version         => $VERSION,
-    description     => "Listaa varaussivulle aktiiviset, kiinni jääneet ja ei aktiiviset varaukset (Paikalliskannat).",
+    description     => "Lists active, triggered and inactive holds on the holds page and displays the number of active holds on the record page (Local databases).",
 };
 
 ## This is the minimum code required for a plugin's 'new' method
